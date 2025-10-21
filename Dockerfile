@@ -1,6 +1,8 @@
 # Utilisation de l'image officielle Node.js LTS
 FROM node:20-alpine AS base
 
+MAINTAINER jean claude simo
+
 # Installer les dépendances uniquement quand nécessaire
 FROM base AS deps
 RUN apk add --no-cache libc6-compat

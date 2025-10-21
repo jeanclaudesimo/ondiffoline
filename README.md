@@ -16,7 +16,7 @@ Installer les dépendances et lancer le serveur de développement :
 
 ```bash
 npm install
-npm run dev
+npm run dev ok
 ```
 
 Ouvrir [http://localhost:3000](http://localhost:3000) dans votre navigateur.

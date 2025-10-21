@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Projet Next.js avec Docker
 
-## Getting Started
+Un projet [Next.js](https://nextjs.org) prêt pour le déploiement sur Dokploy avec Docker.
 
-First, run the development server:
+## Prérequis
+
+- Node.js 20+
+- Docker (pour le développement local avec Docker)
+- Un compte Dokploy pour le déploiement
+
+## Développement local
+
+### Sans Docker
+
+Installer les dépendances et lancer le serveur de développement :
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Vous pouvez commencer à éditer la page en modifiant `app/page.tsx`. La page se met à jour automatiquement.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Avec Docker
 
-## Learn More
+```bash
+# Construire l'image Docker
+docker build -t my-nextjs-app .
 
-To learn more about Next.js, take a look at the following resources:
+# Lancer le conteneur
+docker run -p 3000:3000 my-nextjs-app
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Déploiement sur Dokploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Méthode 1 : Déploiement depuis un dépôt Git
 
-## Deploy on Vercel
+1. Poussez votre code vers un dépôt Git (GitHub, GitLab, Bitbucket, etc.)
+2. Connectez-vous à votre instance Dokploy
+3. Créez un nouveau projet
+4. Sélectionnez "Docker" ou "Git" comme source
+5. Connectez votre dépôt Git
+6. Dokploy détectera automatiquement le Dockerfile
+7. Configurez les variables d'environnement si nécessaire
+8. Cliquez sur "Deploy"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Méthode 2 : Configuration manuelle
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Si vous déployez manuellement, assurez-vous que :
+- Le Dockerfile est à la racine du projet
+- Le port 3000 est exposé
+- Les variables d'environnement sont configurées dans Dokploy
+
+### Variables d'environnement (optionnel)
+
+Ajoutez vos variables d'environnement dans l'interface Dokploy :
+
+```env
+NEXT_PUBLIC_API_URL=https://api.example.com
+# Ajoutez d'autres variables selon vos besoins
+```
+
+## Caractéristiques du Dockerfile
+
+- **Multi-stage build** : Optimise la taille de l'image finale
+- **Image Alpine** : Image de base légère (Node.js 20)
+- **Mode standalone** : Configuration optimisée pour la production
+- **Utilisateur non-root** : Sécurité renforcée
+- **Port 3000** : Port par défaut exposé
+
+## Scripts disponibles
+
+```bash
+npm run dev      # Développement avec hot-reload
+npm run build    # Build de production
+npm run start    # Démarrer en production (après build)
+npm run lint     # Vérification du code
+```
+
+## Technologies utilisées
+
+- **Next.js 15** - Framework React avec App Router
+- **React 19** - Bibliothèque UI
+- **TypeScript** - Typage statique
+- **Tailwind CSS** - Framework CSS utilitaire
+- **Docker** - Conteneurisation
+
+## En savoir plus
+
+- [Next.js Documentation](https://nextjs.org/docs) - Fonctionnalités et API Next.js
+- [Learn Next.js](https://nextjs.org/learn) - Tutoriel interactif Next.js
+- [Dokploy Documentation](https://docs.dokploy.com) - Documentation Dokploy
+
+Ce projet utilise [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) pour optimiser automatiquement la police [Geist](https://vercel.com/font).

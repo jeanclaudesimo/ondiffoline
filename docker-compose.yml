@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Next.js Application
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-nextjs-app
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
+    networks:
+      - traefik-net
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-net"
+      - "traefik.http.routers.nextjs-app-secure.entrypoints=frontendsecure"
+      - "traefik.http.routers.nextjs-app-secure.rule=Host(`test.c-simweb.de`)"
+      - "traefik.http.routers.nextjs-app-secure.service=nextjs-app"
+      - "traefik.http.routers.nextjs-app-secure.tls=true"
+      - "traefik.http.services.nextjs-app.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.nextjs-app-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.nextjs-app-secure.middlewares=nextjs-app-headers"
+
+networks:
+  traefik-net:
+    external: true
+  app-network:
+    driver: bridge

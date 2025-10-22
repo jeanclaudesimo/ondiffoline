@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  ondiffoline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ondiffoline
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
+    networks:
+      - traefik-net
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-net"
+      - "traefik.http.routers.ondiffoline-secure.entrypoints=frontendsecure"
+      - "traefik.http.routers.ondiffoline-secure.rule=Host(`test.c-simweb.de`)"
+      - "traefik.http.routers.ondiffoline-secure.service=ondiffoline"
+      - "traefik.http.routers.ondiffoline-secure.tls=true"
+      - "traefik.http.services.ondiffoline.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.ondiffoline-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.ondiffoline-secure.middlewares=ondiffoline-headers"
+
+networks:
+  traefik-net:
+    external: true
+  app-network:
+    driver: bridge

@@ -7,12 +7,12 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { name: 'Willkommen', href: '/#home' },
-    { name: 'Über uns', href: '/#about' },
+    { name: 'Willkommen', href: '/' },
+    { name: 'Über uns', href: '/ueber-uns' },
     { name: 'Jobs', href: '/jobs' },
     { name: 'FAQ', href: '/#faq' },
     { name: 'Bewertung', href: '/bewertung' },
-    { name: 'Kontakt', href: '/#contact' },
+    { name: 'Kontakt', href: '/kontakt' },
   ];
 
   return (
@@ -47,13 +47,13 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-gray-700 hover:text-[#00467b] transition-colors font-medium"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -91,14 +91,14 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="lg:hidden pb-4">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="block py-2 text-gray-700 hover:text-[#00467b] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
         )}

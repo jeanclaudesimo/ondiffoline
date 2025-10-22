@@ -7,7 +7,7 @@ export default function Jobs() {
     name: '',
     email: '',
     phone: '',
-    position: '',
+    position: 'Reinigungskraft (m/w/d)',
     message: '',
   });
 
@@ -22,30 +22,6 @@ export default function Jobs() {
         'Sorgfältige Arbeitsweise',
         'Teamfähigkeit',
         'Bereitschaft zur Schichtarbeit',
-      ],
-    },
-    {
-      title: 'Objektleiter (m/w/d)',
-      type: 'Vollzeit',
-      location: 'Regional',
-      description: 'Zur Verstärkung unseres Teams suchen wir einen erfahrenen Objektleiter',
-      requirements: [
-        'Erfahrung in der Gebäudereinigung',
-        'Führungserfahrung',
-        'Organisationstalent',
-        'Führerschein Klasse B',
-      ],
-    },
-    {
-      title: 'Bürokraft (m/w/d)',
-      type: 'Teilzeit',
-      location: 'Büro',
-      description: 'Unterstützung im Backoffice für administrative Tätigkeiten',
-      requirements: [
-        'Erfahrung im Büro',
-        'MS Office Kenntnisse',
-        'Organisationsgeschick',
-        'Kommunikationsstärke',
       ],
     },
   ];
@@ -76,7 +52,7 @@ export default function Jobs() {
         </div>
 
         {/* Job Openings */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="max-w-2xl mx-auto mb-16">
           {jobOpenings.map((job, index) => (
             <div
               key={index}
@@ -182,20 +158,15 @@ export default function Jobs() {
                 <label htmlFor="position" className="block text-sm font-semibold text-gray-700 mb-2">
                   Position <span className="text-[#6c0c1c]">*</span>
                 </label>
-                <select
+                <input
+                  type="text"
                   id="position"
                   name="position"
                   required
-                  value={formData.position}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#00467b] focus:outline-none transition-colors text-gray-900"
-                >
-                  <option value="">Bitte wählen...</option>
-                  <option value="reinigungskraft">Reinigungskraft (m/w/d)</option>
-                  <option value="objektleiter">Objektleiter (m/w/d)</option>
-                  <option value="buerokraft">Bürokraft (m/w/d)</option>
-                  <option value="andere">Andere Position</option>
-                </select>
+                  value="Reinigungskraft (m/w/d)"
+                  readOnly
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 text-gray-900"
+                />
               </div>
             </div>
 

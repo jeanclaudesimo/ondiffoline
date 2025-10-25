@@ -16,7 +16,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-net"
       - "traefik.http.routers.ondiffoline-secure.entrypoints=frontendsecure"
-      - "traefik.http.routers.ondiffoline-secure.rule=Host(`test.c-simweb.de`)"
+      - "traefik.http.routers.ondiffoline-secure.rule=Host(`ondiffoline.de`)"
       - "traefik.http.routers.ondiffoline-secure.service=ondiffoline"
       - "traefik.http.routers.ondiffoline-secure.tls=true"
       - "traefik.http.services.ondiffoline.loadbalancer.server.port=3000"

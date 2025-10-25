@@ -249,7 +249,7 @@ export default function DatenschutzPage() {
                     <h3 className="text-xl font-bold text-gray-900 mb-4">Haftungsbeschränkung für externe Links</h3>
                     <div className="prose prose-lg text-gray-700 leading-relaxed">
                       <p>
-                        Unsere Webseite enthält Links auf externe Webseiten Dritter. Auf die Inhalte dieser direkt oder indirekt verlinkten Webseiten haben wir keinen Einfluss. Daher können wir für die „externen Links" auch keine Gewähr auf Richtigkeit der Inhalte übernehmen.
+                        Unsere Webseite enthält Links auf externe Webseiten Dritter. Auf die Inhalte dieser direkt oder indirekt verlinkten Webseiten haben wir keinen Einfluss. Daher können wir für die &quot;externen Links&quot; auch keine Gewähr auf Richtigkeit der Inhalte übernehmen.
                       </p>
                     </div>
                   </div>

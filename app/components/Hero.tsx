@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,6 +21,21 @@ export default function Hero() {
       title: 'Qualität und Zuverlässigkeit',
       subtitle: 'auf die Sie sich verlassen können',
       image: 'https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1920&h=800&fit=crop',
+    },
+    {
+      title: 'OnDiffoline Team',
+      subtitle: 'Ihre professionellen Reinigungsexperten',
+      image: '/OnDiffoline_1_freigestellt_crop.jpg',
+    },
+    {
+      title: 'Moderne Ausrüstung',
+      subtitle: 'Hochwertige Reinigungstechnik',
+      image: '/OnDiffoline_2_freigestellt_crop.jpg',
+    },
+    {
+      title: 'Perfekte Ergebnisse',
+      subtitle: 'Sauberkeit auf höchstem Niveau',
+      image: '/OnDiffoline_3_freigestellt.jpg',
     },
   ];
 
@@ -45,10 +61,17 @@ export default function Hero() {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slide.image})` }}
-          >
+          <div className="absolute inset-0">
+            <Image
+              src={slide.image}
+              alt={`${slide.title} - ${slide.subtitle}`}
+              fill
+              className="object-cover"
+              style={{ objectPosition: 'center 30%' }}
+              priority={index === 0}
+              quality={85}
+              sizes="100vw"
+            />
             <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="relative h-full flex items-center justify-center text-center">

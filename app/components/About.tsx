@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
     <section id="about" className="py-20 bg-white">
@@ -45,15 +47,67 @@ export default function About() {
 
           <div className="relative">
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=1000&fit=crop"
-                alt="Professionelle Reinigung"
-                className="w-full h-full object-cover"
+              <Image
+                src="/OnDiffoline_1_freigestellt.jpg"
+                alt="OnDiffoline - Professionelle Reinigung"
+                fill
+                className="object-cover"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-[#6c0c1c] text-white p-8 rounded-lg shadow-xl">
               <div className="text-3xl font-bold mb-2">100%</div>
               <div className="text-lg">Zufriedenheitsgarantie</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Image Gallery */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+          <div className="relative h-[300px] rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src="/OnDiffoline_2_freigestellt.jpg"
+              alt="OnDiffoline Team bei der Arbeit"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="text-lg font-semibold">Unser Team</h3>
+              <p className="text-sm opacity-90">Erfahrene Fachkräfte</p>
+            </div>
+          </div>
+          <div className="relative h-[300px] rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src="/OnDiffoline_3_freigestellt Kopie.jpg"
+              alt="Professionelle Reinigungsausrüstung"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="text-lg font-semibold">Moderne Ausrüstung</h3>
+              <p className="text-sm opacity-90">Hochwertige Geräte</p>
+            </div>
+          </div>
+          <div className="relative h-[300px] rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src="/OnDiffoline_3_freigestellt Kopie2.jpg"
+              alt="Saubere Arbeitsergebnisse"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="text-lg font-semibold">Perfekte Ergebnisse</h3>
+              <p className="text-sm opacity-90">Höchste Qualität</p>
             </div>
           </div>
         </div>

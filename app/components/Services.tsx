@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Services() {
   const services = [
     {
@@ -121,6 +123,42 @@ export default function Services() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Service Images */}
+        <div className="mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/OnDiffoline_1_freigestellt_crop.jpg"
+                alt="OnDiffoline - Professionelle Reinigungsdienste"
+                fill
+                className="object-cover"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">Umfassende Reinigungsdienste</h3>
+                <p className="text-lg opacity-90">Von der Grundreinigung bis zur Spezialreinigung</p>
+              </div>
+            </div>
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/OnDiffoline_2_freigestellt_crop.jpg"
+                alt="OnDiffoline - Qualität und Zuverlässigkeit"
+                fill
+                className="object-cover"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">Höchste Qualitätsstandards</h3>
+                <p className="text-lg opacity-90">Professionelle Ausführung mit modernster Technik</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="text-center mt-12">

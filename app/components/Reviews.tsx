@@ -2,13 +2,6 @@
 
 import { useState, useEffect } from 'react';
 
-interface Review {
-  name: string;
-  rating: number;
-  date: string;
-  comment: string;
-}
-
 export default function Reviews() {
   const [formData, setFormData] = useState({
     name: '',
@@ -25,44 +18,6 @@ export default function Reviews() {
     setFormStartTime(Date.now());
   }, []);
 
-  const existingReviews: Review[] = [
-    {
-      name: 'Michael Schmidt',
-      rating: 5,
-      date: '15.03.2024',
-      comment: 'Hervorragender Service! Sehr professionell und zuverlässig. Unser Büro ist immer blitzsauber.',
-    },
-    {
-      name: 'Sandra Müller',
-      rating: 5,
-      date: '08.03.2024',
-      comment: 'Wir sind seit 2 Jahren Kunde und absolut zufrieden. Das Team ist freundlich und gründlich.',
-    },
-    {
-      name: 'Thomas Weber',
-      rating: 5,
-      date: '22.02.2024',
-      comment: 'Pünktlich, sauber, fair. Kann ich nur weiterempfehlen! Die Bauabschlussreinigung war perfekt.',
-    },
-    {
-      name: 'Julia Klein',
-      rating: 4,
-      date: '10.02.2024',
-      comment: 'Sehr gute Arbeit, freundliches Personal. Einmal gab es eine kleine Verzögerung, aber ansonsten top!',
-    },
-    {
-      name: 'Robert Fischer',
-      rating: 5,
-      date: '28.01.2024',
-      comment: 'Beste Reinigungsfirma in der Region! Professionell, schnell und sehr gründlich.',
-    },
-    {
-      name: 'Petra Wagner',
-      rating: 5,
-      date: '15.01.2024',
-      comment: 'Für unsere Praxis genau die richtige Wahl. Sehr hygienisch und diskret.',
-    },
-  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -151,24 +106,6 @@ export default function Reviews() {
           </p>
         </div>
 
-        {/* Existing Reviews */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {existingReviews.map((review, index) => (
-            <div
-              key={index}
-              className="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h4 className="font-bold text-gray-900">{review.name}</h4>
-                  <p className="text-sm text-gray-500">{review.date}</p>
-                </div>
-                {renderStars(review.rating)}
-              </div>
-              <p className="text-gray-700 leading-relaxed">{review.comment}</p>
-            </div>
-          ))}
-        </div>
 
         {/* Review Form */}
         <div className="max-w-3xl mx-auto bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-2xl overflow-hidden border-2 border-gray-100">
@@ -313,14 +250,6 @@ export default function Reviews() {
           </form>
         </div>
 
-        {/* Average Rating Display */}
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-[#6c0c1c] text-white rounded-2xl p-8 shadow-xl">
-            <div className="text-5xl font-bold mb-2">4.9</div>
-            <div className="mb-3">{renderStars(5)}</div>
-            <div className="text-white/90">Basierend auf {existingReviews.length} Bewertungen</div>
-          </div>
-        </div>
       </div>
     </section>
   );

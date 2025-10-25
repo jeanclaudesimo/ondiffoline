@@ -22,7 +22,7 @@ export default function KontaktPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="mt-[88px]">
         <Contact />
       </main>
       <Footer />

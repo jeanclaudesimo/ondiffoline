@@ -11,37 +11,34 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-lg text-gray-700">
               <p>
-                Mit <strong>jahrelanger Erfahrung</strong> im Bereich der professionellen
-                Reinigung sind wir Ihr vertrauensvoller Partner für höchste Sauberkeit
-                und Hygiene.
+                Als <strong>frisches, junges und ehrgeiziges Team</strong> haben wir uns zum Ziel gesetzt, 
+                die Erwartungen unserer Kunden stets zu übertreffen und ihr Vertrauen in uns zu bestätigen. 
+                Wir sind davon überzeugt, dass unsere Leidenschaft für exzellenten Service und unsere 
+                Einsatzbereitschaft uns dabei helfen werden, uns als vertrauenswürdiger Partner für alle 
+                Reinigungsbedürfnisse zu etablieren.
               </p>
               <p>
-                Unser Anspruch ist eine <strong>gründliche Reinigung</strong> bis in die
-                kleinsten Ecken und Nischen. Wir verstehen, dass Sauberkeit nicht nur
-                ein optischer Aspekt ist, sondern auch für Gesundheit und Wohlbefinden
-                entscheidend ist.
+                Unser Fokus liegt darauf, <strong>maßgeschneiderte Lösungen</strong> anzubieten, die genau 
+                auf die individuellen Anforderungen unserer Kunden zugeschnitten sind. Dabei setzen wir 
+                nicht nur auf Qualität und Zuverlässigkeit, sondern auch auf Flexibilität und 
+                Kundenzufriedenheit. Egal ob es sich um Grundreinigung, Unterhaltsreinigung, 
+                Gartenreinigung, Treppenhausreinigung oder andere Dienstleistungen handelt - wir sind 
+                für Sie da, um Ihr Zuhause, Ihr Unternehmen oder Ihre Immobilie in bestem Zustand zu halten.
               </p>
               <p>
-                Als <strong>regionaler Fachspezialist</strong> für gewerbliche Reinigung
-                bieten wir maßgeschneiderte Lösungen für Unternehmen jeder Größe. Von
-                der regelmäßigen Unterhaltsreinigung bis zur Spezialreinigung – wir
-                haben die passende Lösung für Sie.
+                Als <strong>lokal verwurzeltes Unternehmen</strong> verstehen wir die Bedürfnisse unserer 
+                Gemeinschaft und sind bestrebt, einen positiven Beitrag zu leisten. Wir setzen auf 
+                nachhaltige Praktiken, umweltfreundliche Produkte und eine enge Zusammenarbeit mit 
+                unseren Kunden, um sicherzustellen, dass wir nicht nur saubere, sondern auch gesunde 
+                und sichere Umgebungen schaffen.
               </p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-6 mt-8">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-[#00467b] mb-2">10+</div>
-                <div className="text-gray-600">Jahre Erfahrung</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-[#00467b] mb-2">500+</div>
-                <div className="text-gray-600">Zufriedene Kunden</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-[#00467b] mb-2">18</div>
-                <div className="text-gray-600">Dienstleistungen</div>
-              </div>
+              <p>
+                Wir sind stolz darauf, <strong>Teil der Krauchenwies-Gemeinschaft</strong> zu sein und 
+                freuen uns darauf, Ihr Vertrauen zu gewinnen und langfristige Beziehungen aufzubauen. 
+                Kontaktieren Sie uns noch heute, um mehr über unsere Dienstleistungen zu erfahren und 
+                zu erleben, wie wir Ihre Reinigungsbedürfnisse mit Leidenschaft und Professionalität 
+                erfüllen können.
+              </p>
             </div>
           </div>
 

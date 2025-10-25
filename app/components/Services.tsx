@@ -3,19 +3,14 @@ import Image from 'next/image';
 export default function Services() {
   const services = [
     {
-      name: 'Gastronomie-Reinigung',
+      name: 'Gastronomie reinigen',
       icon: '🍽️',
       description: 'Professionelle Reinigung für Restaurants und Küchen',
     },
     {
-      name: 'Event-Reinigung',
+      name: 'Event- & Clubreinigung',
       icon: '🎉',
       description: 'Schnelle und gründliche Reinigung nach Veranstaltungen',
-    },
-    {
-      name: 'Büroreinigung',
-      icon: '🏢',
-      description: 'Regelmäßige Pflege Ihrer Büroräume',
     },
     {
       name: 'Bauabschlussreinigung',
@@ -23,14 +18,9 @@ export default function Services() {
       description: 'Entfernung von Baustaub und Schmutz',
     },
     {
-      name: 'Fensterreinigung',
-      icon: '🪟',
-      description: 'Streifenfreie Sauberkeit für alle Fenster',
-    },
-    {
-      name: 'Entrümpelung',
-      icon: '📦',
-      description: 'Professionelle Entrümpelung von Räumen',
+      name: 'Praxis & Büroreinigung',
+      icon: '🏢',
+      description: 'Hygienische Reinigung für Arztpraxen und Büros',
     },
     {
       name: 'Grundreinigung',
@@ -38,9 +28,9 @@ export default function Services() {
       description: 'Tiefenreinigung für alle Bereiche',
     },
     {
-      name: 'Unterhaltsreinigung',
-      icon: '🧹',
-      description: 'Regelmäßige Pflege und Wartung',
+      name: 'Haushaltsreinigung',
+      icon: '🏠',
+      description: 'Regelmäßige Pflege für private Haushalte',
     },
     {
       name: 'Industriereinigung',
@@ -48,49 +38,84 @@ export default function Services() {
       description: 'Spezialreinigung für Industriebetriebe',
     },
     {
-      name: 'Praxisreinigung',
-      icon: '🏥',
-      description: 'Hygienische Reinigung für Arztpraxen',
-    },
-    {
       name: 'Treppenhausreinigung',
       icon: '🪜',
       description: 'Saubere und gepflegte Treppenhäuser',
     },
     {
-      name: 'Hotelreinigung',
-      icon: '🏨',
-      description: 'Professionelle Reinigung für Hotels',
+      name: 'Unterhaltsreinigung',
+      icon: '🧹',
+      description: 'Regelmäßige Pflege und Wartung',
     },
     {
-      name: 'Ladenreinigung',
-      icon: '🏪',
-      description: 'Einladende Sauberkeit für Geschäfte',
+      name: 'Endreinigung',
+      icon: '🏁',
+      description: 'Abschließende Reinigung nach Bauarbeiten',
     },
     {
-      name: 'Glasreinigung',
-      icon: '💎',
-      description: 'Kristallklare Glasflächen',
-    },
-    {
-      name: 'Teppichreinigung',
-      icon: '🧺',
-      description: 'Tiefenreinigung Ihrer Teppiche',
-    },
-    {
-      name: 'Winterdienst',
-      icon: '❄️',
-      description: 'Zuverlässiger Räum- und Streudienst',
-    },
-    {
-      name: 'Gartenpflege',
-      icon: '🌳',
-      description: 'Professionelle Pflege Ihrer Außenanlagen',
+      name: 'Bodenreinigung',
+      icon: '🪨',
+      description: 'Spezialisierte Reinigung aller Bodenbeläge',
     },
     {
       name: 'Sonderreinigung',
       icon: '⭐',
       description: 'Individuelle Reinigungslösungen',
+    },
+    {
+      name: 'Hygienereinigung',
+      icon: '🦠',
+      description: 'Desinfektion und Hygienereinigung',
+    },
+    {
+      name: 'Umzugsreinigung',
+      icon: '📦',
+      description: 'Reinigung vor und nach Umzügen',
+    },
+    {
+      name: 'Firmenreinigung',
+      icon: '🏢',
+      description: 'Umfassende Reinigung für Unternehmen',
+    },
+    {
+      name: 'Büroreinigung',
+      icon: '💼',
+      description: 'Regelmäßige Pflege Ihrer Büroräume',
+    },
+    {
+      name: 'Kita und Schulreinigung',
+      icon: '🎓',
+      description: 'Hygienische Reinigung für Bildungseinrichtungen',
+    },
+    {
+      name: 'Entrümpelung & Haushaltsauflösung',
+      icon: '🗑️',
+      description: 'Professionelle Entrümpelung von Räumen',
+    },
+    {
+      name: 'Wohnungräumung',
+      icon: '🏠',
+      description: 'Komplette Räumung von Wohnungen',
+    },
+    {
+      name: 'Kellerräumung',
+      icon: '🏠',
+      description: 'Entrümpelung von Kellerräumen',
+    },
+    {
+      name: 'Garageräumung',
+      icon: '🚗',
+      description: 'Räumung von Garagen und Stellplätzen',
+    },
+    {
+      name: 'Büroräumung',
+      icon: '🏢',
+      description: 'Komplette Räumung von Büroräumen',
+    },
+    {
+      name: 'Fensterreinigung',
+      icon: '🪟',
+      description: 'Streifenfreie Sauberkeit für alle Fenster',
     },
   ];
 

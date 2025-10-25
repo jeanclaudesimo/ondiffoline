@@ -131,8 +131,8 @@ export default function Footer() {
             <a href="/datenschutz" className="text-gray-400 hover:text-white transition-colors">
               Datenschutz
             </a>
-            <a href="https://c-simweb.de" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              c-simweb.de
+            <a href="https://digitalssolutions.de" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              Website by DigitalSolutions
             </a>
           </div>
         </div>

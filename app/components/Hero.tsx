@@ -11,31 +11,19 @@ export default function Hero() {
       title: 'Ihr regionaler Fachspezialist',
       subtitle: 'für die Gewerbliche Reinigung',
       image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&h=800&fit=crop',
+      objectPosition: 'center 30%',
     },
     {
       title: 'Professionelle Reinigungsdienste',
       subtitle: 'für Ihr Unternehmen',
       image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1920&h=800&fit=crop',
+      objectPosition: 'center 30%',
     },
     {
       title: 'Qualität und Zuverlässigkeit',
       subtitle: 'auf die Sie sich verlassen können',
       image: 'https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1920&h=800&fit=crop',
-    },
-    {
-      title: 'OnDiffoline Team',
-      subtitle: 'Ihre professionellen Reinigungsexperten',
-      image: '/OnDiffoline_1_freigestellt_crop.jpg',
-    },
-    {
-      title: 'Moderne Ausrüstung',
-      subtitle: 'Hochwertige Reinigungstechnik',
-      image: '/OnDiffoline_2_freigestellt_crop.jpg',
-    },
-    {
-      title: 'Perfekte Ergebnisse',
-      subtitle: 'Sauberkeit auf höchstem Niveau',
-      image: '/OnDiffoline_3_freigestellt.jpg',
+      objectPosition: 'center 30%',
     },
   ];
 
@@ -67,7 +55,7 @@ export default function Hero() {
               alt={`${slide.title} - ${slide.subtitle}`}
               fill
               className="object-cover"
-              style={{ objectPosition: 'center 30%' }}
+              style={{ objectPosition: slide.objectPosition }}
               priority={index === 0}
               quality={85}
               sizes="100vw"

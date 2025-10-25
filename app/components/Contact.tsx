@@ -27,10 +27,10 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Kontaktieren Sie uns
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Kontakt
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Wir freuen uns auf Ihre Anfrage und beraten Sie gerne individuell
           </p>
         </div>
@@ -94,8 +94,8 @@ export default function Contact() {
               </div>
               <div className="flex-1">
                 <h4 className="font-semibold text-gray-900 mb-2 text-lg">Standort</h4>
-                <p className="text-gray-700 font-medium">Regional und Umgebung</p>
-                <p className="text-sm text-gray-600 mt-2">Deutschlandweit im Einsatz</p>
+                <p className="text-gray-700 font-medium">Krauchenwies und Umgebung</p>
+                <p className="text-sm text-gray-600 mt-2">Regionaler Service</p>
               </div>
             </div>
 

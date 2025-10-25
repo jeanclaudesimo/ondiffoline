@@ -22,7 +22,7 @@ export default function UeberUnsPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="mt-[88px]">
         <About />
       </main>
       <Footer />

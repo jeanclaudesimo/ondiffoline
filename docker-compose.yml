@@ -38,7 +38,6 @@ services:
       - "traefik.http.routers.ondiffoline-root.entrypoints=frontendsecure"
       - "traefik.http.routers.ondiffoline-root.rule=Host(`ondiffoline.de`)"
       - "traefik.http.routers.ondiffoline-root.tls=true"
-      - "traefik.http.routers.ondiffoline-root.middlewares=redirect-to-www"
       - "traefik.http.routers.ondiffoline-root.service=noop@internal"
 
       # (Optionnel) si tu as un entrypoint HTTP non-TLS (ex: 'frontend'),

@@ -15,40 +15,29 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-net"
-
-      # --- Service ---
-      - "traefik.http.services.ondiffoline.loadbalancer.server.port=3000"
-
-      # --- Middlewares ---
-      # Force HTTPS dans les requêtes internes
-      - "traefik.http.middlewares.ondiffoline-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
-
-      # Redirection du domaine nu -> www (nom unique pour éviter conflits)
-      - "traefik.http.middlewares.ondiffoline-redirect-to-www.redirectregex.regex=^https?://ondiffoline\\.de(.*)"
-      - "traefik.http.middlewares.ondiffoline-redirect-to-www.redirectregex.replacement=https://www.ondiffoline.de$1"
-      - "traefik.http.middlewares.ondiffoline-redirect-to-www.redirectregex.permanent=true"
-
-      # --- Routers ---
-      # www.ondiffoline.de -> sert le site
-      - "traefik.http.routers.ondiffoline-www.entrypoints=frontendsecure"
-      - "traefik.http.routers.ondiffoline-www.rule=Host(`www.ondiffoline.de`)"
-      - "traefik.http.routers.ondiffoline-www.tls=true"
-      - "traefik.http.routers.ondiffoline-www.service=ondiffoline"
-      - "traefik.http.routers.ondiffoline-www.middlewares=ondiffoline-headers"
-
-      # ondiffoline.de -> redirection vers www
+    
+      # HTTP (Port 80) → Redirect auf HTTPS
+      - "traefik.http.routers.ondiffoline-http.entrypoints=frontendsecure"
+      - "traefik.http.routers.ondiffoline-http.rule=Host(`www.ondiffoline.de`)"
+      - "traefik.http.routers.ondiffoline-http.middlewares=ondiffoline-https"
+      
+      - "traefik.http.middlewares.ondiffoline-https.redirectscheme.scheme=https"
+    
+      # Redirect ondiffoline.de → www.ondiffoline.de
       - "traefik.http.routers.ondiffoline-root.entrypoints=frontendsecure"
       - "traefik.http.routers.ondiffoline-root.rule=Host(`ondiffoline.de`)"
+      - "traefik.http.routers.ondiffoline-root.middlewares=ondiffoline-www-redirect"
       - "traefik.http.routers.ondiffoline-root.tls=true"
-      - "traefik.http.routers.ondiffoline-root.middlewares=ondiffoline-redirect-to-www@docker"
-      - "traefik.http.routers.ondiffoline-root.service=noop@internal"
-
-      # (Optionnel) redirection HTTP → HTTPS globale si tu as un entrypoint 'frontend' sur port 80
-      # - "traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)"
-      # - "traefik.http.routers.http-catchall.entrypoints=frontend"
-      # - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
-      # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      # - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+    
+      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.regex=^https?://ondiffoline\\.de(.*)"
+      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.replacement=https://www.ondiffoline.de$1"
+      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.permanent=true"
+    
+      # HTTPS Router
+      - "traefik.http.routers.ondiffoline.entrypoints=frontendsecure"
+      - "traefik.http.routers.ondiffoline.rule=Host(`www.ondiffoline.de`)"
+      - "traefik.http.routers.ondiffoline.tls=true"
+      - "traefik.http.routers.ondiffoline.service=ondiffoline"
 
 networks:
   traefik-net:

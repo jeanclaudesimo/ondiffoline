@@ -37,8 +37,6 @@ services:
       - "traefik.http.routers.ondiffoline.entrypoints=frontendsecure"
       - "traefik.http.routers.ondiffoline.rule=Host(`www.ondiffoline.de`)"
       - "traefik.http.routers.ondiffoline.tls=true"
-      - "traefik.http.routers.ondiffoline.service=ondiffoline"
-
 networks:
   traefik-net:
     external: true

@@ -15,25 +15,34 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-net"
-    
-      # HTTP (Port 80) → Redirect auf HTTPS
+
+      # Middleware: Redirect HTTP to HTTPS
+      - "traefik.http.middlewares.ondiffoline-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.ondiffoline-https.redirectscheme.permanent=true"
+
+      # Middleware: Redirect non-www to www
+      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.regex=^https?://ondiffoline\\.de(.*)"
+      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.replacement=https://www.ondiffoline.de$${1}"
+      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.permanent=true"
+
+      # HTTP ondiffoline.de → https://www.ondiffoline.de
+      - "traefik.http.routers.ondiffoline-root-http.entrypoints=frontendsecure"
+      - "traefik.http.routers.ondiffoline-root-http.rule=Host(`ondiffoline.de`)"
+      - "traefik.http.routers.ondiffoline-root-http.middlewares=ondiffoline-www-redirect"
+
+      # HTTP www.ondiffoline.de → https://www.ondiffoline.de
       - "traefik.http.routers.ondiffoline-http.entrypoints=frontendsecure"
       - "traefik.http.routers.ondiffoline-http.rule=Host(`www.ondiffoline.de`)"
       - "traefik.http.routers.ondiffoline-http.middlewares=ondiffoline-https"
-      
-      - "traefik.http.middlewares.ondiffoline-https.redirectscheme.scheme=https"
-    
-      # Redirect ondiffoline.de → www.ondiffoline.de
+
+      # HTTPS ondiffoline.de → https://www.ondiffoline.de
       - "traefik.http.routers.ondiffoline-root.entrypoints=frontendsecure"
       - "traefik.http.routers.ondiffoline-root.rule=Host(`ondiffoline.de`)"
       - "traefik.http.routers.ondiffoline-root.middlewares=ondiffoline-www-redirect"
       - "traefik.http.routers.ondiffoline-root.tls=true"
-    
-      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.regex=^https?://ondiffoline\\.de(.*)"
-      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.replacement=https://www.ondiffoline.de$1"
-      - "traefik.http.middlewares.ondiffoline-www-redirect.redirectregex.permanent=true"
-    
-      # HTTPS Router
+      - "traefik.http.routers.ondiffoline-root.tls.certresolver=leresolver"
+
+      # HTTPS www.ondiffoline.de (main - no redirect)
       - "traefik.http.routers.ondiffoline.entrypoints=frontendsecure"
       - "traefik.http.routers.ondiffoline.rule=Host(`www.ondiffoline.de`)"
       - "traefik.http.routers.ondiffoline.tls=true"

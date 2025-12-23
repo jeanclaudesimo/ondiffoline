@@ -24,13 +24,13 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'minio.digitalssolutions.de',
+        hostname: 'api.digitalssolutions.de',
         port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: '*.digitalssolutions.de',
+        hostname: 'minio.digitalssolutions.de',
         port: '',
         pathname: '/**',
       },

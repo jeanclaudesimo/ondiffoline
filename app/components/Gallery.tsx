@@ -104,23 +104,9 @@ export default function Gallery() {
 
   useEffect(() => {
     const fetchGallery = async () => {
-      const apiUrl = process.env.NEXT_PUBLIC_PORTAL_API_URL;
-      const tenantKey = process.env.NEXT_PUBLIC_PORTAL_TENANT_KEY;
-      const gallerySlug = process.env.NEXT_PUBLIC_GALLERY_SLUG || 'arbeit-im-bild';
-
-      if (!apiUrl || !tenantKey) {
-        console.log('Portal API not configured, using fallback images');
-        setLoading(false);
-        return;
-      }
-
       try {
-        const response = await fetch(`${apiUrl}/api/public/galleries/${gallerySlug}`, {
-          headers: {
-            'X-Tenant-Key': tenantKey,
-          },
-          cache: 'no-store',
-        });
+        // Use local API route as proxy to avoid CORS issues
+        const response = await fetch('/api/gallery');
 
         if (!response.ok) {
           throw new Error(`Failed to fetch gallery: ${response.status}`);

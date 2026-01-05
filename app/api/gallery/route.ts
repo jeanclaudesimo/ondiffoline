@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const apiUrl = process.env.NEXT_PUBLIC_PORTAL_API_URL;
-  const tenantKey = process.env.NEXT_PUBLIC_PORTAL_TENANT_KEY;
-  const gallerySlug = process.env.NEXT_PUBLIC_GALLERY_SLUG || 'arbeit-im-bild';
+  // Server-side: Use non-prefixed env vars (runtime) with NEXT_PUBLIC fallback (build-time)
+  const apiUrl = process.env.PORTAL_API_URL || process.env.NEXT_PUBLIC_PORTAL_API_URL;
+  const tenantKey = process.env.PORTAL_TENANT_KEY || process.env.NEXT_PUBLIC_PORTAL_TENANT_KEY;
+  const gallerySlug = process.env.GALLERY_SLUG || process.env.NEXT_PUBLIC_GALLERY_SLUG || 'arbeit-im-bild';
 
   if (!apiUrl || !tenantKey) {
     return NextResponse.json(

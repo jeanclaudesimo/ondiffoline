@@ -84,6 +84,13 @@ export function middleware(request: NextRequest) {
   const userAgent = request.headers.get('user-agent') || '';
   const method = request.method;
 
+  // Block fake Server Action requests (this app doesn't use Server Actions)
+  const nextAction = request.headers.get('next-action');
+  if (nextAction) {
+    // Silently reject - don't log to keep console clean
+    return new NextResponse('Not Found', { status: 404 });
+  }
+
   const baseEvent = {
     timestamp: new Date().toISOString(),
     ip: clientIP,

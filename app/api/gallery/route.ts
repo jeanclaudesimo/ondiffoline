@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { validateRequestBody } from '@/lib/sanitize';
 
 export async function GET() {
   // Server-side: Use non-prefixed env vars (runtime) with NEXT_PUBLIC fallback (build-time)
@@ -29,6 +30,23 @@ export async function GET() {
     }
 
     const data = await response.json();
+
+    // Validate portal response for malicious content
+    const validation = validateRequestBody(data);
+    if (!validation.valid) {
+      console.log(JSON.stringify({
+        level: 'warn',
+        category: 'security',
+        type: 'BLOCKED_PORTAL_RESPONSE',
+        reason: validation.reason,
+        timestamp: new Date().toISOString(),
+      }));
+      return NextResponse.json(
+        { error: 'Invalid gallery data' },
+        { status: 502 }
+      );
+    }
+
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching gallery:', error);

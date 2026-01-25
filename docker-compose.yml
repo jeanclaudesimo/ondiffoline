@@ -12,6 +12,7 @@ services:
       - PORTAL_API_URL=https://portal.digitalssolutions.de
       - PORTAL_TENANT_KEY=8139c9c39b67bf5e159f55e081d8ad20cf56e5849f99c8e6ba05d3a0b2aa099a
       - GALLERY_SLUG=arbeit-im-bild
+      - SECURITY_STATS_SECRET=ton-secret-securise-ici
     restart: unless-stopped
     networks:
       - traefik-net

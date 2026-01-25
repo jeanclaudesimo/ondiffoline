@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getConnection } from '@/lib/db';
+import { validateRequestBody, sanitizeString } from '@/lib/sanitize';
 
 export interface Review {
   id: number;
@@ -35,8 +36,25 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+
+    // Security validation
+    const validation = validateRequestBody(body);
+    if (!validation.valid) {
+      console.log(JSON.stringify({
+        level: 'warn',
+        category: 'security',
+        type: 'BLOCKED_PAYLOAD',
+        reason: validation.reason,
+        timestamp: new Date().toISOString(),
+      }));
+      return NextResponse.json(
+        { error: 'Invalid request' },
+        { status: 400 }
+      );
+    }
+
     const { name, rating, comment, service } = body;
-    
+
     // Validierung
     if (!name || !rating || !comment || !service) {
       return NextResponse.json(
@@ -44,22 +62,27 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    
+
     if (rating < 1 || rating > 5) {
       return NextResponse.json(
         { error: 'Rating must be between 1 and 5' },
         { status: 400 }
       );
     }
-    
+
+    // Sanitize inputs
+    const safeName = sanitizeString(String(name), 100);
+    const safeComment = sanitizeString(String(comment), 2000);
+    const safeService = sanitizeString(String(service), 100);
+
     const connection = await getConnection();
-    
+
     // Neue Bewertung einfügen (erstmal nicht genehmigt)
     await connection.execute(
       'INSERT INTO reviews (name, rating, comment, service, approved) VALUES (?, ?, ?, ?, 0)',
-      [name, rating, comment, service]
+      [safeName, rating, safeComment, safeService]
     );
-    
+
     return NextResponse.json({ message: 'Review submitted successfully' });
   } catch (error) {
     console.error('Database error:', error);
